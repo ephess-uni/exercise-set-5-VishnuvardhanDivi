@@ -22,5 +22,11 @@ if __name__ == "__main__":
     OUTFILE = root_dir / "outputs" / "ex_5_2-processed.csv"
 
     # Complete the data processing steps using numpy here.
+    data = np.loadtxt(INFILE)
+    data -= data.mean()
+    std_=data.std()
 
     # Save the output to OUTFILE using numpy routines.
+    a=data/std_
+    os.makedirs(root_dir / "outputs", exist_ok=True)
+    np.savetxt(OUTFILE, a, fmt='%.2e')
